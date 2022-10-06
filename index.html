@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boston Workers & Salaries</title>
+</head>
+<body>
+  <div id="container">
+    <!-- populated by JS-->
+  </div>
+
+  <script src="./boston.js"></script>
+ 
+ <script> 
+    function renderBoston(boston, container) {
+      var person = boston.data;
+      var len = boston.data.length; // boston is an array
+      var html = '';
+      for (let i = 0; i < len; i++) {
+        html += '<li class="post">' +
+          '<h2>' + person[i][8] + '</h2>' +
+          '<h3>' + person[i][11] + '</h3>'
+      }
+      container.innerHTML = '<ul id = "boston">' + html + '</ul>';
+    }
+    renderBoston(boston, document.getElementById('container'));
+
+    function renderTopFiveEarners (boston, container) {
+      let people = boston.data;
+      // let len = boston.data.length;
+      let html = '';
+      let topFiveEarners = people.sort((a, b) => b[11] - a[11]).slice(0, 5);
+      for (let i = 0; i < topFiveEarners.length; i++) {
+        html += '<li class="topFive">' + '<h2>' + people[i][8] + '</h2>' +
+          '<h3>' + people[i][11] + '</h3>';
+      }
+      container.innerHTML = '<ol id="topFives>' + html + '</ol>';
+    }
+    renderTopFiveEarners(boston, document.getElementById('container'));
+
+    function renderHighEarners (boston, container) {
+      let people = boston.data;
+      let html = '';
+      let highEarners = people.filter(person => person[11] > 100000);
+      for (let i = 0; i < highEarners.length; i++) {
+        html += '<li class="highEarner>' + '<h2>' + people[i][8] + '</h2>' + '<h3>' + people[i][11] + '</h3>';
+      }
+      container.innerHTML = '<ol id="highEarners' + html + '</ol>'
+    }
+    renderHighEarners(boston, document.getElementById('container'));
+
+
+  </script>
+ 
+</body>
+</html>
