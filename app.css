@@ -1,0 +1,26 @@
+body {
+    background-image: url("images.jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#container {
+    background-color: rgb(43, 191, 207);
+    border-radius: 20%;
+    margin: 0, 0;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    border: solid black 5px;
+}
+
+h1 {
+    background-color: rgb(43, 191, 207);
+    padding: 1%;
+    border-radius: 1%;
+    border: solid black 5px;
+    box-shadow: blac;
+}
